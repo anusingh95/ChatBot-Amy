@@ -79,7 +79,7 @@ def display_pdf(pdf_path):
         else:
             st.write("PDF not found.")
 def main():
-    st.set_page_config(page_title="ChatBot", page_icon=":robot_face:")
+   
     cool_header()
     
     st.sidebar.title("Frequently Asked Questions")
