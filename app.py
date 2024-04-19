@@ -63,14 +63,12 @@ def user_input(user_question, chats):
 def cool_header():
     st.title("🚀 Chat with Amy using Gemini 💁")
     st.markdown("Amy is a chatbot designed to answer queries of customers of a software company that develops AI products.")
-    st.markdown("[Source Code](https://github.com/anusingh95/ChatBot-Amy)")
+    st.markdown("[Source Code](https://github.com/yourusername/yourrepo)")
     
 def display_chat(chats):
     for chat in chats:
         st.write(f"You: {chat['User']}")
         st.write(f"Amy: {chat['Amy']}")
-        
-# Function to display PDF in expander
 def display_pdf(pdf_path):
     with st.expander("View PDF of Questions Amy Responds to", expanded=False):
         if os.path.exists(pdf_path):
@@ -80,10 +78,17 @@ def display_pdf(pdf_path):
                     st.write(page.extract_text())
         else:
             st.write("PDF not found.")
-
 def main():
     st.set_page_config(page_title="ChatBot", page_icon=":robot_face:")
     cool_header()
+    
+    st.sidebar.title("Frequently Asked Questions")
+    for idx, question in enumerate(predefined_questions):
+        if st.sidebar.button(f"{question}"):
+            user_question = question
+            chats = st.session_state.get('chats', [])
+            chats = user_input(user_question, chats)
+            st.session_state['chats'] = chats
     
     user_question = st.text_input("User:")
     chats = st.session_state.get('chats', [])
@@ -95,14 +100,11 @@ def main():
                 st.session_state['chats'] = chats
                 user_question = ""  # Clear input field after asking
                 
-    st.markdown("Frequently asked questions:")
-    for idx, question in enumerate(predefined_questions):
-        if st.button(f"{question}"):
-            chats = user_input(question, chats)
-            st.session_state['chats'] = chats
-    
     display_chat(chats)
     display_pdf("ChatbotQ.pdf")
+
+if __name__ == "__main__":
+    main()
 
 if __name__ == "__main__":
     main()
