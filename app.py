@@ -17,6 +17,9 @@ if not GOOGLE_API_KEY:
 # Configure the Google Generative AI API
 genai.configure(api_key=GOOGLE_API_KEY)
 
+# Configure the Google Generative AI API
+genai.configure(api_key=GOOGLE_API_KEY)
+
 # Predefined questions
 predefined_questions = [
     "Hi Amy",
@@ -79,7 +82,7 @@ def display_pdf(pdf_path):
         else:
             st.write("PDF not found.")
 def main():
-   
+    st.set_page_config(page_title="ChatBot", page_icon=":robot_face:")
     cool_header()
     
     st.sidebar.title("Frequently Asked Questions")
@@ -102,9 +105,6 @@ def main():
                 
     display_chat(chats)
     display_pdf("ChatbotQ.pdf")
-
-if __name__ == "__main__":
-    main()
 
 if __name__ == "__main__":
     main()
