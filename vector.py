@@ -18,7 +18,7 @@ if not GOOGLE_API_KEY:
 # Configure the Google Generative AI API
 genai.configure(api_key=GOOGLE_API_KEY)
 
-pdf_destination = "/home/anon/Desktop/Chatbot/data"
+pdf_destination = "data"
 
 pdf_docs = [os.path.join(pdf_destination, pdf_file) for pdf_file in os.listdir(pdf_destination) if pdf_file.endswith('.pdf')]
 
