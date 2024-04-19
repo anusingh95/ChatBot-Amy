@@ -8,13 +8,11 @@ from langchain.vectorstores import FAISS
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains.question_answering import load_qa_chain
 from langchain.prompts import PromptTemplate
-from dotenv import load_dotenv
 
-load_dotenv()
-GOOGLE_API_KEY = os.getenv("GOOGLE_API")
+GOOGLE_API_KEY = st.secrets['GOOGLE_API']
 
 if not GOOGLE_API_KEY:
-    raise ValueError("GOOGLE_API_KEY not found. Please set it in your .env file.")
+    raise ValueError("GOOGLE_API_KEY not found.")
 
 # Configure the Google Generative AI API
 genai.configure(api_key=GOOGLE_API_KEY)
