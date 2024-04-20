@@ -66,7 +66,7 @@ def user_input(user_question, chats):
 def cool_header():
     st.title("🚀 Chat with Amy using Gemini 💁")
     st.markdown("Amy is a chatbot designed to answer queries of customers of a software company that develops AI products.")
-    st.markdown("[Source Code](https://github.com/yourusername/yourrepo)")
+    st.markdown("[Source Code](https://github.com/anusingh95/ChatBot-Amy)")
     
 def display_chat(chats):
     for chat in chats:
